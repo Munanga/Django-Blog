@@ -1,0 +1,27 @@
+{% extends "base/index.html" %}
+
+{% block title %}homepage{% endblock%}
+
+{% block body %}
+    <form action="{% url 'entryApp:entry'%}" method="get">
+        <input type="submit" class="btn btn-primary" value="create">
+    </form>
+
+{% if var_stories %}
+    <ol type="1">
+    {% for story in var_stories %}
+    <li>
+        <ul>
+            <li>Name: {{ story.name }}</li>
+            <li>Topic: {{ story.topic }}</li>
+            <li>Story: {{ story.content }}</li>
+            <br>
+        </ul>
+     </li>
+    {% endfor%}
+    </ol>
+{% else %}
+    <p>No stories yet homie! click create to add one.</p>
+{% endif%}
+
+{% endblock %}
